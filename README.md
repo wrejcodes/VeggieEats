@@ -5,7 +5,7 @@ Final Project for CSC440
 # Installation
 1. First clone the project
 2. run npm install
-3. install webpack globally ( npm instal -g webpack)
+3. install webpack globally ( npm install -g webpack)
 4. Make sure you're using the typescript linting tool from Microsoft in your editor
 
 # Todos
