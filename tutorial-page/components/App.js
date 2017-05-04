@@ -4,25 +4,12 @@ var Search = require('./Search');
 var Map = require('./Map');
 var CurrentLocation = require('./CurrentLocation');
 var LocationList = require('./LocationList');
+var LocationButton = require('./LocationButton');
 
 var App = React.createClass({
 
 	getInitialState(){
-
 		// Extract the favorite locations from local storage
-		/*function createMap(position) {
-			return {
-				favorites: favorites,
-				currentAddress: 'Hattiesburg, MS',
-				mapCoordinates: {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				}
-			};
-		};
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;*/
-
 		var favorites = [];
 
 		if(localStorage.favorites){
@@ -39,7 +26,6 @@ var App = React.createClass({
 				lng: 2.3522219
 			}
 		};
-		// return navigator.geolocation.getCurrentPosition(createMap);
 	},
 
 	toggleFavorite(address){
@@ -142,26 +128,32 @@ var App = React.createClass({
 	},
 
 	getLocation() {
-/*  		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-        		var self = this;
-  				var lat = position.coords.latitude;
-  				var lng = position.coords.longitude;
-  				self.setState({
-  				mapCoordinates: {
-  					lat: lat,
-  					lng: lng
-  					}
-  				});
-          	});
-        }
-
-        else {
-          // Browser doesn't support Geolocation
-          alert("Geolocation is not supported by this browser.");
-        }*/
         if (navigator.geolocation) {
-        	navigator.geolocation.getCurrentPosition(setCurrentPosition());
+        	navigator.geolocation.getCurrentPosition(function(position) {
+        		var self = this;
+
+				// We will use GMaps' geocode functionality,
+				// which is built on top of the Google Maps API
+
+				GMaps.geocode({
+					address: position,
+					callback: function(results, status) {
+
+						if (status !== 'OK') return;
+
+						var latlng = results[0].geometry.location;
+
+						self.setState({
+							currentAddress: results[0].formatted_address,
+							mapCoordinates: {
+								lat: latlng.lat(),
+								lng: latlng.lng()
+							}
+						});
+
+					}
+				});
+        	});
         }
         else {
         	alert("Geolocation not supported by this browser.");
@@ -175,7 +167,7 @@ var App = React.createClass({
 			<div>
 				<h1>VeggieEats</h1>
 
-				<input type="button" onClick={this.getLocation} value="Set Current Location" />
+				<LocationButton onSearch={this.searchForAddress} />
 
 				<Search onSearch={this.searchForAddress} />
 
