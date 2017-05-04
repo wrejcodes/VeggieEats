@@ -4227,10 +4227,11 @@ var App = (function (_super) {
         alert(address);
     };
     App.prototype.render = function () {
+        var address = "This will need to be fixed";
         return (React.createElement("div", null,
             React.createElement(Header_1.Header, null),
             React.createElement(Map_1.Map, { lat: 31.3303, long: 89.3357 }),
-            React.createElement(Search_1.Search, { onSearch: this.searchForAddress })));
+            React.createElement(Search_1.Search, { onSearch: this.searchForAddress(address) })));
     };
     return App;
 }(React.Component));

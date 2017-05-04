@@ -1,5 +1,5 @@
 import * as React from "react";
-import {LocationItem} from "./LocationItem.tsx"
+import {LocationItem} from "./LocationItem"
 
 export interface LocationListProps{
 	locations: LocationItem[];
