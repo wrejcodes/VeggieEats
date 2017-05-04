@@ -3,7 +3,8 @@ import * as React from "react";
 
 export class Header extends React.Component<undefined,undefined>{
 	render(){
-		const header_style = {"background-color": "#0A233D", color: "#FFFFFF", display: "flex", "flex-direction":"column", "justify-content": "center", "text-align": "center"};
+		const header_style = {"background-color": "#0A233D", color: "#FFFFFF", display: "flex", "flex-direction":"column",
+							 "justify-content": "center", "text-align": "center", padding: "0px 50px 10px 50px"};
 		const h1_style = {"font-family": "helvetica"}
 		
 		return(<header style={header_style}>

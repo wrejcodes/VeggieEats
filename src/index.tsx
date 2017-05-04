@@ -14,7 +14,7 @@ class App extends React.Component<undefined,undefined>{
 	render(){
 		let address= "This will need to be fixed";
 		
-		return( <div> 
+		return( <div style={{backgroundColor: "#D6D6D6"}}> 
 				<Header />
 				<Map lat={31.3303} long={89.3357} />
 				<Search onSearch={this.searchForAddress(address)} />

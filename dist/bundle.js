@@ -4109,7 +4109,8 @@ var Header = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Header.prototype.render = function () {
-        var header_style = { "background-color": "#0A233D", color: "#FFFFFF", display: "flex", "flex-direction": "column", "justify-content": "center", "text-align": "center" };
+        var header_style = { "background-color": "#0A233D", color: "#FFFFFF", display: "flex", "flex-direction": "column",
+            "justify-content": "center", "text-align": "center", padding: "0px 50px 10px 50px" };
         var h1_style = { "font-family": "helvetica" };
         return (React.createElement("header", { style: header_style },
             React.createElement("h1", { style: h1_style }, "VeggieEats"),
@@ -4229,7 +4230,7 @@ var App = (function (_super) {
     };
     App.prototype.render = function () {
         var address = "This will need to be fixed";
-        return (React.createElement("div", null,
+        return (React.createElement("div", { style: { backgroundColor: "#D6D6D6" } },
             React.createElement(Header_1.Header, null),
             React.createElement(Map_1.Map, { lat: 31.3303, long: 89.3357 }),
             React.createElement(Search_1.Search, { onSearch: this.searchForAddress(address) })));
