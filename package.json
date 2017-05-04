@@ -20,7 +20,8 @@
     "@types/react": "^15.0.23",
     "@types/react-dom": "^15.5.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-google-maps": "^7.0.0"
   },
   "devDependencies": {
     "@types/node": "^7.0.15",
