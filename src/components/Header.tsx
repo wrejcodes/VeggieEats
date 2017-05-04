@@ -3,11 +3,13 @@ import * as React from "react";
 
 export class Header extends React.Component<undefined,undefined>{
 	render(){
-		const img_style = {opacity: 0.5, display: "block"};
-		return(<header>
-				<h1>VeggieEats</h1>
+		const header_style = {"background-color": "#0A233D", color: "#FFFFFF", display: "flex", "flex-direction":"column", "justify-content": "center", "text-align": "center"};
+		const h1_style = {"font-family": "helvetica"}
+		
+		return(<header style={header_style}>
+				<h1 style={h1_style}>VeggieEats</h1>
 				<p>Find vegetarian friendly options in your area</p>
-				<img style={img_style} src={ require('../../assets/brooke-lark-229136.jpg')} />
+				<img src={ require('../../assets/brooke-lark-229136.jpg')} />
 			  </header>
 		);
 	}

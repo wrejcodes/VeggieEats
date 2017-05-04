@@ -4109,11 +4109,12 @@ var Header = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Header.prototype.render = function () {
-        var img_style = { opacity: 0.5, display: "block" };
-        return (React.createElement("header", null,
-            React.createElement("h1", null, "VeggieEats"),
+        var header_style = { "background-color": "#0A233D", color: "#FFFFFF", display: "flex", "flex-direction": "column", "justify-content": "center", "text-align": "center" };
+        var h1_style = { "font-family": "helvetica" };
+        return (React.createElement("header", { style: header_style },
+            React.createElement("h1", { style: h1_style }, "VeggieEats"),
             React.createElement("p", null, "Find vegetarian friendly options in your area"),
-            React.createElement("img", { style: img_style, src: __webpack_require__(337) })));
+            React.createElement("img", { src: __webpack_require__(337) })));
     };
     return Header;
 }(React.Component));
