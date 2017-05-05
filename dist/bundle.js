@@ -4151,7 +4151,7 @@ var Map = (function (_super) {
     }
     Map.prototype.render = function () {
         var SimpleGoogleMap = react_google_maps_1.withGoogleMap(function (props) { return (React.createElement(react_google_maps_1.GoogleMap, { defaultZoom: 13, defaultCenter: { lat: 31.3303, lng: -89.3357 } })); });
-        return (React.createElement("div", { style: { height: "500px", width: "500px" } },
+        return (React.createElement("div", { style: { "margin-left": '30%', height: "500px", width: "500px", padding: "2px 0px 10px 0px" } },
             React.createElement(SimpleGoogleMap, { containerElement: React.createElement("div", { style: { height: "100%" } }), mapElement: React.createElement("div", { style: { height: "100%" } }) })));
     };
     return Map;
@@ -4232,8 +4232,10 @@ var App = (function (_super) {
         var address = "This will need to be fixed";
         return (React.createElement("div", { style: { backgroundColor: "#D6D6D6" } },
             React.createElement(Header_1.Header, null),
-            React.createElement(Map_1.Map, { lat: 31.3303, long: 89.3357 }),
-            React.createElement(Search_1.Search, { onSearch: this.searchForAddress(address) })));
+            React.createElement("div", { style: { "margin-left": "30%", padding: "10px 0px 2px 0px" } },
+                React.createElement(Search_1.Search, { onSearch: this.searchForAddress(address) })),
+            React.createElement("div", null,
+                React.createElement(Map_1.Map, { lat: 31.3303, long: 89.3357 }))));
     };
     return App;
 }(React.Component));

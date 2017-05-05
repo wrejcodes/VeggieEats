@@ -16,8 +16,12 @@ class App extends React.Component<undefined,undefined>{
 		
 		return( <div style={{backgroundColor: "#D6D6D6"}}> 
 				<Header />
-				<Map lat={31.3303} long={89.3357} />
-				<Search onSearch={this.searchForAddress(address)} />
+				<div style={{"margin-left": "30%", padding: "10px 0px 2px 0px"}}>
+					<Search onSearch={this.searchForAddress(address)} />
+				</div>
+				<div>
+					<Map lat={31.3303} long={89.3357} />
+				</div>
 			</div>);
 	}
 }
