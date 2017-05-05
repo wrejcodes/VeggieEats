@@ -11,12 +11,15 @@ export class LocationButton extends React.Component<LocationButtonProps,undefine
 	}
 
 	handleClick(){
-		navigator.geolocation.getCurrentPosition((pos)=>{
-			// this is the callback for accepting the position
-			this.props.onClick(pos);
-		}, (err)=>{
-			console.log(`Error:${err.code}, Message: ${err.message}`);
-		}, {enableHighAccuracy:true, timeout: 5000});
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition((pos)=>{
+				// this is the callback for accepting the position
+				this.props.onClick(pos);
+			}, (err)=>{
+				console.log(`Error:${err.code}, Message: ${err.message}`);
+			}, {enableHighAccuracy:true, timeout: 5000});
+		}
+		
 	}
 
 	render(){
