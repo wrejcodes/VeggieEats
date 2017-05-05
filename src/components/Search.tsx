@@ -36,7 +36,7 @@ export class Search extends React.Component<SearchProps, SearchState> {
 		const form_style = {
 			"background-color": "#fffbf8",
 			padding: "5px",
-			width: "335px",
+			width: "310px",
 			//margin: "100px auto",
 			"-webkit-box-sizing": "border-box",
 			"-moz-box-sizing": "border-box",
