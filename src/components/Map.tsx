@@ -10,22 +10,16 @@ export interface MapProps{
 
 
 export class Map extends React.Component<MapProps,undefined>{
-	private lat: number;
-	private long: number;
-	private lastLat: number;
-	private lastLong: number;
 
 	constructor(props:MapProps){
 		super(props);
- 		this.lat = this.props.lat;
- 		this.long = this.props.long;
 	}
 
 	render(){
 		const SimpleGoogleMap = withGoogleMap(props =>(
 	<GoogleMap
 		defaultZoom={13}
-		defaultCenter={{lat: 31.3303, lng: -89.3357 }}
+		center={{lat: this.props.lat, lng: this.props.long }}
 	/>
 ));
 		return(

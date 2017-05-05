@@ -4,10 +4,40 @@ import * as ReactDOM from "react-dom";
 // here is where we will import the other components we make from  ./components/Name_of_component
 import {Header} from "./components/Header";
 import {Map, MapProps} from "./components/Map";
-import {Search} from "./components/Search";
+import {Search, Coordinates} from "./components/Search";
 import {LocationButton} from "./components/LocationButton";
 
-class App extends React.Component<undefined,undefined>{
+interface Restaurant{
+	name:string;
+	description: string;
+	lat: number;
+	long: number;
+}
+
+interface AppState {
+	location: Coordinates|null;
+	restaruants: Restaurant[];
+
+}
+
+class App extends React.Component<undefined,AppState>{
+
+	constructor(){
+		super();
+		this.state = {location: {lat: 31.3303, long:-89.3357}, restaruants: []};
+	}
+
+	componentDidMount(){
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition((pos)=>{
+				// this is the callback for accepting the position
+				this.setState({location: {lat: pos.coords.latitude, long: pos.coords.longitude}});
+			}, (err)=>{
+				console.log(`Error:${err.code}, Message: ${err.message}`);
+			}, {enableHighAccuracy:true, timeout: 5000});
+		}
+	}
+
 	searchForAddress(address) {
 		alert(address);
 	}
@@ -31,7 +61,7 @@ class App extends React.Component<undefined,undefined>{
 							<LocationButton onClick={(position)=>{alert(position)}}/>
 						</div>
 						<div style={{"margin-top": "3px"}}>
-							<Map lat={31.3303} long={89.3357} />
+							<Map lat={this.state.location.lat} long={this.state.location.long} />
 						</div>
 					</div>
 				</div>

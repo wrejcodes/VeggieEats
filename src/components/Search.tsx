@@ -1,5 +1,10 @@
 import * as React from 'react';
 
+export interface Coordinates {
+	lat:number;
+	long:number;
+}
+
 export interface SearchProps {
 	onSearch:(any);
 }
