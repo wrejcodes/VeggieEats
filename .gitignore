@@ -37,7 +37,7 @@ jspm_packages
 .node_repl_history
 
 #ignore map files
-./dist/bundle.js.map
+/dist/bundle.js.map
 
 #ignore bundle to prevent git merge conflicts
-./dist/bundle.js
+/dist/bundle.js
