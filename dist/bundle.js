@@ -4111,7 +4111,7 @@ var Header = (function (_super) {
     Header.prototype.render = function () {
         var header_style = { "background-color": "#0A233D", color: "#FFFFFF", display: "flex", "flex-direction": "column",
             "justify-content": "center", "text-align": "center", padding: "0px 50px 10px 50px" };
-        var h1_style = { "font-family": "helvetica" };
+        var h1_style = { "font-family": "Great Vibes, cursive", "font-size": "75px" };
         return (React.createElement("header", { style: header_style },
             React.createElement("h1", { style: h1_style }, "VeggieEats"),
             React.createElement("p", null, "Find vegetarian friendly options in your area"),
