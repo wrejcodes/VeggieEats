@@ -7,7 +7,7 @@ export interface LocationButtonProps{
 export class LocationButton extends React.Component<LocationButtonProps,undefined>{
 	constructor(props:LocationButtonProps){
 		super(props);
-
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	handleClick(){

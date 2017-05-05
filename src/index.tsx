@@ -5,6 +5,7 @@ import * as ReactDOM from "react-dom";
 import {Header} from "./components/Header";
 import {Map, MapProps} from "./components/Map";
 import {Search} from "./components/Search";
+import {LocationButton} from "./components/LocationButton";
 
 class App extends React.Component<undefined,undefined>{
 	searchForAddress(address) {
@@ -12,7 +13,6 @@ class App extends React.Component<undefined,undefined>{
 	}
 
 	render(){
-		let address= "This will need to be fixed";
 		
 		return( <div style={{backgroundColor: "#D6D6D6", padding: "0px"}}> 
 				<Header />
@@ -29,7 +29,8 @@ class App extends React.Component<undefined,undefined>{
 					</div>
 					<div style={{"flex-direction": "column"}}>
 						<div style={{"margin-top": "18px"}}>
-							<Search onSearch={this.searchForAddress(address)} />
+							<Search onSearch={(address)=>{this.searchForAddress(address)}} />
+							<LocationButton onClick={(position)=>{alert(position)}}/>
 						</div>
 						<div style={{"margin-top": "3px"}}>
 							<Map lat={31.3303} long={89.3357} />
