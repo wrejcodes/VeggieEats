@@ -39,7 +39,7 @@ class App extends React.Component<undefined,AppState>{
 	}
 
 	searchForAddress(address) {
-		alert(address);
+		this.setState({location: {lat: address.lat, long: address.long}})
 	}
 
 	render(){

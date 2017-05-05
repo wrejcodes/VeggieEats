@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import PlacesAutoComplete, { geocodeByAddress } from "react-places-autocomplete";
+
 export interface Coordinates {
 	lat:number;
 	long:number;
@@ -9,27 +11,36 @@ export interface SearchProps {
 	onSearch:(any);
 }
 export interface SearchState{
-	text:string;
+	address:string;
 }
 
 export class Search extends React.Component<SearchProps, SearchState> {
 	private currentSearchQuery: string;
+	private onChange: (address:string) => void;
 
 	constructor(props:SearchProps) {
 		super(props);
-		this.state={text:""};
-		this.handleChange = this.handleChange.bind(this);
+		this.state={address:""};
+		this.onChange = (address) => this.setState({address});
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleChange(event): void {
-		this.setState({text: event.target.value});
-	}
+	// handleChange(event): void {
+	// 	this.setState({text: event.target.value});
+	// }
 
 	handleSubmit(event) {
 		// prevent the form from reloading the page
 		event.preventDefault();
-		this.props.onSearch(this.state.text);
+
+		geocodeByAddress(this.state.address, (err,latLng)=>{
+			if (err) {
+				console.log(err);
+			}
+			else {
+				this.props.onSearch({lat:latLng.lat, long:latLng.lng})
+			}
+		});
 	}
 
 	render() {
@@ -71,9 +82,14 @@ export class Search extends React.Component<SearchProps, SearchState> {
 			border: "none",
 			cursor: "pointer",
 		}
+
+		const inputProps = {
+			value: this.state.address,
+			onChange: this.onChange
+		}
 		return (
 			<form style={form_style} id="search-bar" onSubmit={this.handleSubmit}>
-				<input style={input_style} type="text" id="address" placeholder="Find a location..." value={this.state.text} onChange={this.handleChange} />
+				<PlacesAutoComplete inputProps={inputProps} />
 				<button style={button_style} type="submit"  value="search">&nbsp;</button>
 			</form>
 	  	);
