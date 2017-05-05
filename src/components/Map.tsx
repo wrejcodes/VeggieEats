@@ -29,7 +29,7 @@ export class Map extends React.Component<MapProps,undefined>{
 	/>
 ));
 		return(
-			<div style={{"margin-left": '30%', height: `500px`, width: `500px`, padding: "2px 0px 10px 0px"}} >
+			<div style={{height: `500px`, width: `500px`}} >
 			<SimpleGoogleMap
 				containerElement={
 					<div style={{height: `100%`}} />
