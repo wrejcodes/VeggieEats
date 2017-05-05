@@ -4230,7 +4230,7 @@ var App = (function (_super) {
     };
     App.prototype.render = function () {
         var address = "This will need to be fixed";
-        return (React.createElement("div", { style: { backgroundColor: "#D6D6D6" } },
+        return (React.createElement("div", { style: { backgroundColor: "#D6D6D6", padding: "0px" } },
             React.createElement(Header_1.Header, null),
             React.createElement("div", { style: { display: "flex", "flex-direction": "row", "justify-content": "space-around" } },
                 React.createElement("div", { style: { "font-size": "25px", width: "35%" } },
