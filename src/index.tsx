@@ -14,7 +14,7 @@ class App extends React.Component<undefined,undefined>{
 	render(){
 		let address= "This will need to be fixed";
 		
-		return( <div style={{backgroundColor: "#D6D6D6"}}> 
+		return( <div style={{backgroundColor: "#D6D6D6", padding: "0px"}}> 
 				<Header />
 				<div style={{display: "flex", "flex-direction": "row", "justify-content": "space-around"}}>
 					<div style={{"font-size": "25px", width: "35%"}}>
