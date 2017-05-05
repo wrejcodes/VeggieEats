@@ -4180,17 +4180,23 @@ var React = __webpack_require__(10);
 var Search = (function (_super) {
     __extends(Search, _super);
     function Search(props) {
-        return _super.call(this, props) || this;
+        var _this = _super.call(this, props) || this;
+        _this.state = { text: "" };
+        _this.handleChange = _this.handleChange.bind(_this);
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        return _this;
     }
     Search.prototype.handleChange = function (event) {
-        this.currentSearchQuery = event.target.value;
+        this.setState({ text: event.target.value });
     };
     Search.prototype.handleSubmit = function (event) {
-        this.props.onSearch(this.currentSearchQuery);
+        // prevent the form from reloading the page
+        event.preventDefault();
+        this.props.onSearch(this.state.text);
     };
     Search.prototype.render = function () {
-        return (React.createElement("form", { id: "search-bar", onSubmit: this.handleSubmit.bind(this) },
-            React.createElement("input", { type: "text", id: "address", placeholder: "Find a location...", value: this.currentSearchQuery, onChange: this.handleChange.bind(this) })));
+        return (React.createElement("form", { id: "search-bar", onSubmit: this.handleSubmit },
+            React.createElement("input", { type: "text", id: "address", placeholder: "Find a location...", value: this.state.text, onChange: this.handleChange })));
     };
     return Search;
 }(React.Component));
