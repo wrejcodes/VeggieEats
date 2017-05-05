@@ -28,9 +28,17 @@ export class Search extends React.Component<SearchProps, SearchState> {
 	}
 
 	render() {
+		const input_style = {
+	        background: "linear-gradient(to bottom, #FFFFFF, #EEEEEE)",
+	        border: "solid 2px #E5E5E5",
+	        "-moz-box-shadow": "rgba(0,0,0,0.1) 0 0 8px",
+	        "-webkit-box-shadow": "rgba(0,0,0,0.1) 0 0 8px",
+	        "box-shadow": "rgba(0,0,0,0.1) 0 0 8px",
+	        width: "200px",
+		}
 		return (
 			<form id="search-bar" onSubmit={this.handleSubmit}>
-				<input type="text" id="address" placeholder="Find a location..." value={this.state.text} onChange={this.handleChange} />
+				<input style={input_style} type="text" id="address" placeholder="Find a location..." value={this.state.text} onChange={this.handleChange} />
 			</form>
 	  	);
 	}

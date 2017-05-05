@@ -19,12 +19,10 @@ class App extends React.Component<undefined,undefined>{
 				<div style={{display: "flex", "flex-direction": "row", "justify-content": "space-around"}}>
 					<div style={{"font-size": "25px", width: "35%"}}>
 						<p>
-							Do you think plants, vegetables, and whatever tofu is have been living the easy
-							life for far to long? Well show them who the boss is the same way the rest
-							of carnivorous world does! Serve them up on a nice platter and eat them. You
-							can probably even request them to be cooked the same way you like your favorite
-							steak to be cooked, medium rare. By selecting a restaraunt from this list PETA
-							is sure to send you friend request on Facebook.
+							To the right you will see a list of vegitarian friendly options in your area.
+							If you are looking for a specific restaruant simply search for it in the area
+							provided. Travelling to another city? Search for that city and all vegitarian
+							options in a 25 mile radius will appear from that location.
 						</p>
 					</div>
 					<div style={{"flex-direction": "column"}}>
