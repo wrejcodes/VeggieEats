@@ -16,7 +16,7 @@ interface Restaurant{
 
 interface AppState {
 	location: Coordinates|null;
-	restaruants: Restaurant[];
+	restaurants: Restaurant[];
 
 }
 
@@ -24,14 +24,14 @@ class App extends React.Component<undefined,AppState>{
 
 	constructor(){
 		super();
-		this.state = {location: {lat: 31.3303, long:-89.3357}, restaruants: []};
+		this.state = {location: {lat: 31.3303, lng:-89.3357}, restaurants: []};
 	}
 
 	componentDidMount(){
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition((pos)=>{
 				// this is the callback for accepting the position
-				this.setState({location: {lat: pos.coords.latitude, long: pos.coords.longitude}});
+				this.setState({location: {lat: pos.coords.latitude, lng: pos.coords.longitude}});
 			}, (err)=>{
 				console.log(`Error:${err.code}, Message: ${err.message}`);
 			}, {enableHighAccuracy:true, timeout: 5000});
@@ -39,7 +39,7 @@ class App extends React.Component<undefined,AppState>{
 	}
 
 	searchForAddress(address) {
-		this.setState({location: {lat: address.lat, long: address.long}})
+		this.setState({location: {lat: address.lat, lng: address.long}})
 	}
 
 	render(){
@@ -49,19 +49,19 @@ class App extends React.Component<undefined,AppState>{
 				<div style={{display: "flex", "flex-direction": "row", "justify-content": "space-around"}}>
 					<div style={{"font-size": "25px", width: "35%"}}>
 						<p>
-							To the right you will see a list of vegitarian friendly options in your area.
-							If you are looking for a specific restaruant simply search for it in the area
+							To the right you will see a list of vegetarian friendly options in your area.
+							If you are looking for a specific restaurant simply search for it in the area
 							provided. Travelling to another city? Search for that city and all vegitarian
-							options in a 25 mile radius will appear from that location.
+							options in a 5 mile radius will appear from that location.
 						</p>
+						<Search onSearch={(address)=>{this.searchForAddress(address)}} />
 					</div>
 					<div style={{"flex-direction": "column"}}>
 						<div style={{"margin-top": "18px"}}>
-							<Search onSearch={(address)=>{this.searchForAddress(address)}} />
-							<LocationButton onClick={(position)=>{alert(position)}}/>
+							
 						</div>
 						<div style={{"margin-top": "3px"}}>
-							<Map lat={this.state.location.lat} long={this.state.location.long} />
+							<Map lat={this.state.location.lat} long={this.state.location.lng} />
 						</div>
 					</div>
 				</div>
